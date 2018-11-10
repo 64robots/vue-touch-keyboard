@@ -1,28 +1,22 @@
-<template lang="jade">
-	div
-		.content(:class="{ hasKeyboard: visible }")
-			fieldset
-				legend Layouts
-				select#layoutSelector(v-model="layout")
-					option(v-for="(layout, key) in allLayouts", :value="key") {{ key }}
+<template>
 
-			fieldset
-				legend Normal layout
-				input#text.input(type="text", placeholder="Text input", @focus="show", data-layout="normal")
+    <div>
 
-			fieldset
-				legend Compact layout
-				input.input(type="text", placeholder="Text input", @focus="show", data-layout="compact", maxlength="5")
+        <input type="text" @focus="show" data-layout="normal"/>
 
-			fieldset
-				legend Numeric layout
-				input.input(type="number", placeholder="Number input", number, @focus="show", data-layout="numeric")
+        <textarea  @focus="show" data-layout="normal"></textarea>
 
-			fieldset
-				legend Password with compact layout
-				input.input(type="password", placeholder="Password input", @focus="show", data-layout="compact")
+        <textarea @focus="show" data-layout="numeric"></textarea>
 
-		vue-touch-keyboard#keyboard(v-if="visible", :layout="layout", :cancel="hide", :accept="accept", :input="input", :next="next", :options="options")
+        <vue-touch-keyboard
+                v-if="visible"
+                :layout="layout"
+                :cancel="hide"
+                :accept="accept"
+                :input="input"
+                :next="next"
+                :options="options"></vue-touch-keyboard>
+    </div>
 
 </template>
 
@@ -91,11 +85,7 @@
 		
 		mounted() {
 			window.app = this;
-			this.$nextTick(() => {
-				this.input = document.querySelector("input#text");
-				this.input.focus();
-				//this.visible = true;
-			});
+
 		}
 	}
 
