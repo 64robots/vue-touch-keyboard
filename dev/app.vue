@@ -6,7 +6,7 @@
 
         <textarea  @focus="show" data-layout="normal"></textarea>
 
-        <textarea @focus="show" data-layout="numeric"></textarea>
+        <textarea @focus="show" data-layout="numeric-random"></textarea>
 
         <vue-touch-keyboard
                 v-if="visible"

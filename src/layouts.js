@@ -122,10 +122,9 @@ module.exports = {
       "zero": { key: "0", width: 130}
     },
 
-    default: [
+    default: () => [
       ...randomNumbers(),
       "{zero} {backspace} {next}"
     ]
   }
-
 };
