@@ -1,3 +1,25 @@
+/**
+ * Shuffles array in place. ES6 version
+ * @param {Array} a items An array containing the items.
+ */
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function randomNumbers() {
+	let numbersArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+	let [first, second, third, fourth, fifth, sixth, seventh, eight, nine] = shuffle(numbersArray);
+	return [
+		`${first} ${second} ${third}`,
+    `${fourth} ${fifth} ${sixth}`,
+    `${seventh} ${eight} ${nine}`
+	]
+}
+
 module.exports = {
 
 	"normal": {
@@ -83,12 +105,27 @@ module.exports = {
 			"zero": { key: "0", width: 130}
 		},
 
-		default: [
-			"1 2 3",
-			"4 5 6",
-			"7 8 9",
+		default: () => [
+      "1 2 3",
+      "4 5 6",
+      "7 8 9",
 			"_ - . {zero} {backspace} {next} {accept}"
 		]
-	}
+	},
+
+  "numeric-random": {
+
+    _meta: {
+      "backspace": { func: "backspace", classes: "control"},
+      "accept": { func: "accept", text: "Close", classes: "control featured"},
+      "next": { func: "next", text: "Next", classes: "control featured"},
+      "zero": { key: "0", width: 130}
+    },
+
+    default: [
+      ...randomNumbers(),
+      "{zero} {backspace} {next}"
+    ]
+  }
 
 };

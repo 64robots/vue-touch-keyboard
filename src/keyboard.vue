@@ -45,7 +45,7 @@
 				let layout = this.getLayout();
 				if (!layout) return;
 				
-				let keySet = layout[this.currentKeySet];
+				let keySet = this.getKeySet(layout, this.currentKeySet);
 				if (!keySet) return;
 
 				let res = [];
@@ -140,6 +140,14 @@
 			supportsSelection() {
 				return (/text|password|search|tel|url/).test(this.input.type); 
 			},
+
+      getKeySet(layout, keyset) {
+			  try {
+			    return layout[keyset]()
+        } catch (e) {
+          return layout[keyset]
+        }
+      },
 
 			getCaret() {
 				if (this.supportsSelection()) {

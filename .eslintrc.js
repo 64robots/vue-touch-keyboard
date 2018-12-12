@@ -7,7 +7,6 @@ module.exports = {
         "jquery": false,
         mocha: true
     },
-    "extends": "eslint:recommended",
     "parserOptions": {
         "sourceType": "module"
     },
@@ -23,10 +22,7 @@ module.exports = {
             "warn",
             "double"
         ],
-        "semi": [
-            "error",
-            "always"
-        ],
+
         "no-var": [
             "error"
         ],
